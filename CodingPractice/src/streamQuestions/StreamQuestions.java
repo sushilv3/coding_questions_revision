@@ -47,5 +47,7 @@ public class StreamQuestions {
 
         Map<String, Map<Boolean, List<Employee>>> empGroupWIthPartition = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.partitioningBy(emp -> emp.getSalary() > 72000)));
         System.out.println("empGroupWIthPartition : " + empGroupWIthPartition);
+        System.out.println("average salary of each department : "
+                +employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.averagingDouble(Employee::getSalary))));
     }
 }
