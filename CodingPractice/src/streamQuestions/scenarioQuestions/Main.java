@@ -25,5 +25,13 @@ public class Main {
         System.out.println("After modification:");
         System.out.println("Student DOB: " + student.getDob());
         System.out.println("Local DOB: " + dob);
+
+   EmployeeBuilderPatter employeeBuilderPatter = new EmployeeBuilderPatter.Builder()
+           .id(1)
+           .name("sushil")
+           .age(36)
+           .build();
     }
+
+
 }
