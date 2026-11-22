@@ -1,10 +1,8 @@
 package streamQuestions;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ConcurrentSkipListMap;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamQuestions {
@@ -33,8 +31,8 @@ public class StreamQuestions {
                 .groupingBy(Employee::getDepartment,
                         Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparing(Employee::getSalary)),
                                 Optional::get)));
-        System.out.println("higest salaried employee by each department :" + highestPaidByDept);
-        System.out.println("higest salaried employee by each department :" +
+        System.out.println("highest salaried employee by each department :" + highestPaidByDept);
+        System.out.println("highest salaried employee by each department :" +
                 employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,
                         Collectors.maxBy(Comparator.comparingDouble(Employee::getSalary)))));
 //   partition the employee in two group : employee earning morethen 55000 and employees earning 55000 or less
@@ -48,6 +46,12 @@ public class StreamQuestions {
         Map<String, Map<Boolean, List<Employee>>> empGroupWIthPartition = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.partitioningBy(emp -> emp.getSalary() > 72000)));
         System.out.println("empGroupWIthPartition : " + empGroupWIthPartition);
         System.out.println("average salary of each department : "
-                +employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.averagingDouble(Employee::getSalary))));
+                + employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.averagingDouble(Employee::getSalary))));
+        String name = "sushil";
+        System.out.println("first non repeating character " + Arrays.stream(name.split(""))
+                .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+                .entrySet().stream().filter(entry -> entry.getValue() == 1)
+                .map(Map.Entry::getKey)
+                .findFirst());
     }
 }

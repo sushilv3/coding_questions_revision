@@ -12,6 +12,12 @@ public class EmployeeBuilderPatter {
 
     }
 
+    public EmployeeBuilderPatter(Builder builder, int id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
     public static class Builder {
         private int id;
         private String name;
@@ -31,9 +37,7 @@ public class EmployeeBuilderPatter {
             this.age = age;
             return this;
         }
-        public EmployeeBuilderPatter build() {
-            return new EmployeeBuilderPatter(this);
-        }
+
     }
 
     public int getId() {
