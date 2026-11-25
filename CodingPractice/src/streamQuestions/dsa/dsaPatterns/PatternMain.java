@@ -1,4 +1,4 @@
-package streamQuestions.dsaPatterns;
+package streamQuestions.dsa.dsaPatterns;
 
 public class PatternMain {
     public static void main(String[] args) {
