@@ -12,11 +12,12 @@ public class Day2Array {
         System.out.println("moveZero  : " + Arrays.toString(arr1));
         /*remove duplicates hw*/
         /*duplicate zero hw*/
+        /*do 2 -3 questions of array rotation*/
+
     }
 
     public static void reverseArray(int[] arr) {
         int left = 0, right = arr.length - 1, temp = 0;
-
         while (left < right) {
             temp = arr[right];
             arr[right] = arr[left];
